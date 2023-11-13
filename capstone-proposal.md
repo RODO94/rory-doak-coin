@@ -110,6 +110,8 @@ _Epic 3 would focus on functionality to add connections to your site via a form 
 
 _Epic 4 would focus on refining the UX side of the site and adding in fun animations to make the project engaging_
 
+**Epic 5: Bug Fix -- rest of the time**
+
 ## Nice-to-haves
 
 Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
