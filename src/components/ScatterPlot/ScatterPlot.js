@@ -1,18 +1,26 @@
 import { ResponsiveScatterPlot } from "@nivo/scatterplot";
 import "./ScatterPlot.scss";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ScatterPlot() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([1, 2, 3, 4]);
   const userId = "57581dd2-96b8-4402-912b-c669c16f21a2";
   useEffect(() => {
     const fetchBalanceData = async () => {
       const balances = await axios.get(
         `http://localhost:8080/accounts/connections/${userId}`
       );
-      setData(await balances);
+      console.log(await balances.data);
+      setData(await balances.data);
     };
-  }, userId);
+    fetchBalanceData();
+  }, [userId]);
+
+  if (!data) {
+    return <p>We are loading your content, please wait</p>;
+  }
+
   return (
     <section className="scatter-plot">
       <ResponsiveScatterPlot
