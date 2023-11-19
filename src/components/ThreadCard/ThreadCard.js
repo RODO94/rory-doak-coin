@@ -1,5 +1,11 @@
+import Thread from "../Thread/Thread";
 import "./ThreadCard.scss";
 
 export default function ThreadCard() {
-  return <article className="thread-card">This is the thread card</article>;
+  return (
+    <section className="thread-card">
+      <h2 className="thread-card__title">Threads</h2>
+      <Thread />
+    </section>
+  );
 }

@@ -7,16 +7,20 @@ import ThreadCard from "../../components/ThreadCard/ThreadCard";
 export default function Homepage() {
   return (
     <main className="homepage">
-      <UserCard />
-      <section className="homepage__graph">
-        <h2 className="homepage__title">Monthly Spend</h2>
-        <BarGraph />
-      </section>
-      <ThreadCard />
-      <section className="homepage__graph">
-        <h2 className="homepage__title">Account Balance</h2>
-        <BarGraph />
-      </section>
+      <aside className="homepage__aside">
+        <UserCard />
+        <ThreadCard />
+      </aside>
+      <div className="homepage__graphs">
+        <section className="homepage__graph">
+          <h2 className="homepage__title">Monthly Spend</h2>
+          <BarGraph />
+        </section>
+        <section className="homepage__graph">
+          <h2 className="homepage__title">Account Balance</h2>
+          <BarGraph />
+        </section>
+      </div>
     </main>
   );
 }
