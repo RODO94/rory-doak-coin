@@ -27,7 +27,7 @@ export default function BarGraph() {
     return <p>We are loading your content, please wait</p>;
   }
   return (
-    <section className="bar-graph">
+    <article className="bar-graph">
       <ResponsiveBar
         data={data}
         keys={["savings_balance", "available_balance"]}
@@ -131,6 +131,6 @@ export default function BarGraph() {
           e.id + ": " + e.formattedValue + " in country: " + e.indexValue
         }
       />
-    </section>
+    </article>
   );
 }

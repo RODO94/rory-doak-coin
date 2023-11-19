@@ -8,9 +8,15 @@ export default function Homepage() {
   return (
     <main className="homepage">
       <UserCard />
-      <BarGraph />
+      <section className="homepage__graph">
+        <h2 className="homepage__title">Monthly Spend</h2>
+        <BarGraph />
+      </section>
       <ThreadCard />
-      <BarGraph />
+      <section className="homepage__graph">
+        <h2 className="homepage__title">Account Balance</h2>
+        <BarGraph />
+      </section>
     </main>
   );
 }

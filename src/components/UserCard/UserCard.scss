@@ -1,10 +1,10 @@
 @use "../../styles/partials/_variables" as *;
 .user-card {
   background-color: $background1;
-  margin-top: 2.69rem;
   border-radius: 2.1875rem;
   padding: 0 2rem;
-  width: 20%;
+  width: 27%;
+  height: 40vh;
 
   &__welcome {
     font-size: 2.5rem;

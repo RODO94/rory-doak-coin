@@ -1,6 +1,26 @@
+@use "../../styles/partials/_variables" as *;
 .homepage {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 6.25rem;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 4.06%;
+  row-gap: 2rem;
+  background-color: $background0;
+  padding-top: 2.69rem;
+  &__graph {
+    width: 68%;
+    height: 40vh;
+    background-color: white;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 2.1875rem;
+    box-shadow: 0px 4px 4px 0px rgba(2, 96, 82, 0.3);
+  }
+  &__title {
+    margin: 0;
+  }
 }
