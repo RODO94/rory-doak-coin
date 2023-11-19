@@ -1,0 +1,10 @@
+@use "../../styles/partials/_variables" as *;
+
+.thread-card {
+  background-color: $background2;
+  width: 20%;
+  height: 30vh;
+  border-radius: 2.1875rem;
+  padding: 2rem 2rem;
+  margin-top: 2.13rem;
+}

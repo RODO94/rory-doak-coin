@@ -1,0 +1,71 @@
+@use "../../styles/partials/_variables" as *;
+.user-card {
+  background-color: $background1;
+  margin-top: 2.69rem;
+  border-radius: 2.1875rem;
+  padding: 0 2rem;
+  width: 20%;
+
+  &__welcome {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    padding-bottom: 0.31rem;
+    padding-top: 2.06rem;
+    border-bottom: 1px solid white;
+  }
+  &__text {
+    color: white;
+    font-size: 1.1875rem;
+    font-weight: 400;
+    margin-top: 1.88rem;
+    margin-bottom: 0;
+  }
+  &__amount {
+    color: #fff;
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin: 0;
+    margin-top: 0.62rem;
+  }
+  &__accounts {
+    &-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2.19rem;
+      padding-bottom: 2.37rem;
+    }
+    &-count {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2.0625rem;
+      width: 2.0625rem;
+      border-radius: 50%;
+      background-color: $background2;
+      color: $background1;
+    }
+    &-text {
+      color: #fff;
+      font-size: 1.1875rem;
+      font-weight: 400;
+      margin: 0;
+    }
+    &-contain {
+      display: flex;
+      flex-direction: row;
+      gap: 0.69rem;
+      align-items: center;
+    }
+    &-button {
+      background-color: transparent;
+      border: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+  }
+}

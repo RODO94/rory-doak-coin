@@ -1,0 +1,20 @@
+@use "../../styles/partials/_variables" as *;
+
+.header {
+  margin-left: 6.25rem;
+  margin-right: 6.25rem;
+  border-bottom: 1px solid black;
+  &__logo {
+    height: 4.4375rem;
+    width: 4.4375rem;
+    border-radius: 50%;
+    background-color: $background1;
+  }
+  &__nav {
+    padding: 2.44rem 0rem 1.88rem 0rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
