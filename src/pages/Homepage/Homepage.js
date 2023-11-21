@@ -3,6 +3,9 @@ import UserCard from "../../components/UserCard/UserCard";
 import BarGraph from "../../components/BarGraph/BarGraph";
 import "./Homepage.scss";
 import ThreadCard from "../../components/ThreadCard/ThreadCard";
+import ScatterPlot from "../../components/ScatterPlot/ScatterPlot";
+import BumpGraph from "../../components/BumpGraph/BumpGraph";
+import LineGraph from "../../components/LineGraph/LineGraph";
 
 export default function Homepage() {
   return (
@@ -18,7 +21,7 @@ export default function Homepage() {
         </section>
         <section className="homepage__graph">
           <h2 className="homepage__title">Account Balance</h2>
-          <BarGraph />
+          <LineGraph />
         </section>
       </div>
     </main>

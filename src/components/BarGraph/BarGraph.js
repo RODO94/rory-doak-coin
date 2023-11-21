@@ -11,15 +11,14 @@ export default function BarGraph() {
       const balances = await axios.get(
         `http://localhost:8080/accounts/connections/${userId}`
       );
-      console.log(balances.data);
       setData(balances.data);
     };
     fetchBalanceData();
   }, [userId]);
 
   const colors = {
-    savings_balance: "#FED0A2",
-    available_balance: "#E0E0E0",
+    savings_balance: "#03a688",
+    available_balance: "#f470b0",
   };
   const getColor = (bar) => colors[bar.id];
 

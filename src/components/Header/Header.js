@@ -9,7 +9,7 @@ export default function Header() {
         <Link to={"/"} className="header__logo"></Link>
         <NavLink text={"Connections"} />
         <NavLink text={"Loans"} />
-        <NavLink text={"Threads"} />
+        <NavLink route="/threads" text={"Threads"} />
       </nav>
     </header>
   );

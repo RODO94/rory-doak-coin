@@ -4,15 +4,33 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ScatterPlot() {
-  const [data, setData] = useState([1, 2, 3, 4]);
+  const [data, setData] = useState(null);
   const userId = "57581dd2-96b8-4402-912b-c669c16f21a2";
+
+  const formatData = (array) => {
+    if (!array) {
+      return "No array";
+    }
+    const newDataArray = array.map((item) => {
+      return (item = {
+        id: item.connect_first_name,
+        data: [
+          {
+            x: item.available_balance / 100,
+            y: item.savings_balance / 100,
+          },
+        ],
+      });
+    });
+    return newDataArray;
+  };
+
   useEffect(() => {
     const fetchBalanceData = async () => {
       const balances = await axios.get(
         `http://localhost:8080/accounts/connections/${userId}`
       );
-      console.log(await balances.data);
-      setData(await balances.data);
+      setData(formatData(balances.data));
     };
     fetchBalanceData();
   }, [userId]);
@@ -20,25 +38,35 @@ export default function ScatterPlot() {
   if (!data) {
     return <p>We are loading your content, please wait</p>;
   }
+  console.log(data);
+
+  const colors = {
+    Rory: "#FED0A2",
+  };
+  const getColor = (serie) => colors[serie.serieId];
 
   return (
     <section className="scatter-plot">
       <ResponsiveScatterPlot
         data={data}
-        margin={{ top: 60, right: 140, bottom: 70, left: 90 }}
+        margin={{ top: 10, right: 36, bottom: 70, left: 80 }}
         xScale={{ type: "linear", min: 0, max: "auto" }}
-        xFormat=">-.2f"
-        yScale={{ type: "linear", min: 0, max: "auto" }}
+        xFormat=" ^-100.2~f"
+        yScale={{ type: "linear", min: 0, max: "10000" }}
         yFormat=">-.2f"
         blendMode="multiply"
+        colors={getColor}
         axisTop={null}
         axisRight={null}
+        onClick={(event) => {
+          console.log(event);
+        }}
         axisBottom={{
           orient: "bottom",
-          tickSize: 5,
+          tickSize: 10,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "weight",
+          legend: "Available Balance",
           legendPosition: "middle",
           legendOffset: 46,
         }}
@@ -47,33 +75,10 @@ export default function ScatterPlot() {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "size",
+          legend: "Savings",
           legendPosition: "middle",
           legendOffset: -60,
         }}
-        legends={[
-          {
-            anchor: "bottom-right",
-            direction: "column",
-            justify: false,
-            translateX: 130,
-            translateY: 0,
-            itemWidth: 100,
-            itemHeight: 12,
-            itemsSpacing: 5,
-            itemDirection: "left-to-right",
-            symbolSize: 12,
-            symbolShape: "circle",
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemOpacity: 1,
-                },
-              },
-            ],
-          },
-        ]}
       />
     </section>
   );
