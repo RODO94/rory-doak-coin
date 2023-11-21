@@ -1,0 +1,24 @@
+@use "../../styles/partials/_variables" as *;
+.message {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  &--user {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  &--assistant {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  &__text--user {
+    color: black;
+    font-size: 0.875rem;
+  }
+  &__text--assistant {
+    color: $nav;
+    font-size: 0.875rem;
+  }
+}
