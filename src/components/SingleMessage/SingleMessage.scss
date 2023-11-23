@@ -5,13 +5,23 @@
   width: 100%;
   &--user {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
   }
   &--assistant {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-end;
+    align-items: flex-start;
+    padding-left: 1.5rem;
+  }
+  &__title {
+    text-transform: capitalize;
+    font-style: italic;
+    &--assistant {
+      color: $nav;
+    }
   }
   &__text--user {
     color: black;

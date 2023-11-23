@@ -3,29 +3,33 @@ import "./SingleMessage.scss";
 import { SmartToy } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
+import { marked } from "marked";
 
 export default function SingleMessage({ role, content }) {
-  const [isUser, setIsUser] = useState(true);
-
-  console.log(role);
+  const parsedContent = marked.parse(content);
   return (
     <article
       className={
         role === "user" ? "message message--user" : "message message--assistant"
       }
     >
-      <p
+      <strong
+        className={
+          role === "user"
+            ? "message__title message__title--user"
+            : "message__title message__title--assistant"
+        }
+      >
+        {role}
+      </strong>
+      <div
         className={
           role === "user"
             ? "message__text message__text--user"
             : "message__text message__text--assistant"
         }
-      >
-        {content}
-      </p>
-      {/* <ThemeProvider theme={theme}>
-        <SmartToy color="primary" />
-      </ThemeProvider> */}
+        dangerouslySetInnerHTML={{ __html: parsedContent }}
+      ></div>
     </article>
   );
 }

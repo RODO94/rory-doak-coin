@@ -1,6 +1,9 @@
 @use "../../styles/partials/_variables" as *;
 .chat-window {
-  height: 100%;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &__container {
     height: 100%;
   }

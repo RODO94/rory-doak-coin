@@ -1,10 +1,7 @@
-import GraphCard from "../../components/GraphCard/GraphCard";
 import UserCard from "../../components/UserCard/UserCard";
 import BarGraph from "../../components/BarGraph/BarGraph";
 import "./Homepage.scss";
 import ThreadCard from "../../components/ThreadCard/ThreadCard";
-import ScatterPlot from "../../components/ScatterPlot/ScatterPlot";
-import BumpGraph from "../../components/BumpGraph/BumpGraph";
 import LineGraph from "../../components/LineGraph/LineGraph";
 
 export default function Homepage() {

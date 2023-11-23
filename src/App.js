@@ -3,6 +3,7 @@ import "./App.scss";
 import Homepage from "./pages/Homepage/Homepage";
 import Header from "./components/Header/Header";
 import Threads from "./pages/Threads/Threads";
+import LogIn from "./pages/LogIn/LogIn";
 
 function App() {
   return (
@@ -10,9 +11,10 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/home" element={<Homepage />} />
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/threads" element={<Threads />} />
+          <Route path="/home/:userId" element={<Homepage />} />
+          <Route path="/" element={<LogIn />} />
+          <Route path="/threads/:userId" element={<Threads />} />
+          <Route path="/threads/:userId/:threadId" element={<Threads />} />
         </Routes>
       </div>
     </BrowserRouter>

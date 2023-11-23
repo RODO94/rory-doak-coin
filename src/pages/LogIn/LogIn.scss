@@ -1,0 +1,38 @@
+@use "../../styles/partials/_variables" as *;
+.log-in {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__section {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__profile {
+    border-radius: 50%;
+  }
+  &__img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+  }
+  &__link {
+    margin-top: 1rem;
+    display: block;
+    min-width: 3rem;
+    max-width: 25rem;
+    width: 100vw;
+    padding: 1rem;
+    text-align: center;
+    background-color: $nav;
+    text-decoration: none;
+    border-radius: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    font-family: "Roboto", sans-serif, monospace;
+  }
+}
