@@ -1,6 +1,12 @@
 import "./ChatInput.scss";
 import { Send } from "@mui/icons-material";
-import { ThemeProvider, createTheme } from "@mui/material";
+import {
+  IconButton,
+  InputAdornment,
+  TextField,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
 
 export default function ChatInput({ handleClick }) {
   const theme = createTheme({
@@ -8,15 +14,30 @@ export default function ChatInput({ handleClick }) {
       primary: { main: "#026052" },
     },
   });
+
+  const ariaLabel = { "aria-label": "message input box" };
   return (
     <form onSubmit={handleClick} className="chat-window__chat-form">
-      <label id="message"></label>
-      <textarea className="chat-window__input" name="message" id="message" />
-      <button type="submit" className="chat-window__button">
-        <ThemeProvider theme={theme}>
-          <Send className="chat-window__icon" color="primary" />
-        </ThemeProvider>
-      </button>
+      <ThemeProvider theme={theme}>
+        <TextField
+          id="message"
+          label="Send a message to your assistant"
+          color="primary"
+          maxRows={4}
+          aria-label={ariaLabel}
+          fullWidth
+          multiline
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton type="submit" aria-label="send message button">
+                  <Send className="chat-window__icon" color="primary" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+      </ThemeProvider>
     </form>
   );
 }

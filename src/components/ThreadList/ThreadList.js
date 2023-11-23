@@ -19,7 +19,7 @@ export default function ThreadList() {
       <div className="threads-section__wrap"></div>
       <ThemeProvider theme={theme}>
         <button className="threads-section__save-button">
-          Save current thread
+          Save thread
           <span className="threads-section__icon">
             <Add color="primary" />
           </span>

@@ -11,8 +11,10 @@
     padding: 1.5rem;
   }
   &__messages {
-    height: 55%;
+    height: 45%;
+    margin-bottom: 1rem;
     overflow: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scrollbar-color: $background1;
     display: flex;

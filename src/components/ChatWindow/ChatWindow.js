@@ -18,13 +18,14 @@ export default function ChatWindow() {
   ]);
   const handleClick = (event) => {
     event.preventDefault();
-    console.log(event.target.message.value);
     const array = {
       id: Math.random() * 10,
       role: "user",
       content: event.target.message.value,
     };
-    setMessageArray([...messageArray, array]);
+    const newArray = [...messageArray, array];
+    const sortedArray = newArray.sort((a, b) => a.id - b.id);
+    setMessageArray(sortedArray);
   };
 
   return (
