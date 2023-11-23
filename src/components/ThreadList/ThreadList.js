@@ -8,6 +8,7 @@ import axios from "axios";
 
 export default function ThreadList({ userId }) {
   const [threadArray, setThreadArray] = useState(null);
+  const [newThreadCreated, setNewThreadCreated] = useState(false);
   const theme = createTheme({
     palette: {
       primary: { main: "#ffffff" },
@@ -18,9 +19,21 @@ export default function ThreadList({ userId }) {
     setThreadArray(data);
   };
 
+  const handleCreateThread = async (event) => {
+    try {
+      setNewThreadCreated(true);
+      const newThread = await axios.post(
+        "http://localhost:8080/threads/create"
+      );
+      console.log(newThread);
+      getThreads();
+    } catch (error) {}
+  };
+
   useEffect(() => {
     getThreads();
-  }, [userId]);
+    setNewThreadCreated(false);
+  }, [userId, newThreadCreated]);
 
   if (!threadArray) {
     return <LinearProgress />;
@@ -30,12 +43,20 @@ export default function ThreadList({ userId }) {
       <h2 className="threads-section__title">Threads</h2>
       <section>
         {threadArray.map((thread) => (
-          <Thread key={thread.id} userId={userId} threadId={thread.thread_id} />
+          <Thread
+            key={thread.id}
+            name={`Thread ${thread.thread_id[10]}`}
+            userId={userId}
+            threadId={thread.thread_id}
+          />
         ))}
       </section>
       <div className="threads-section__wrap"></div>
       <ThemeProvider theme={theme}>
-        <button className="threads-section__save-button">
+        <button
+          onClick={handleCreateThread}
+          className="threads-section__save-button"
+        >
           Save thread
           <span className="threads-section__icon">
             <Add color="primary" />

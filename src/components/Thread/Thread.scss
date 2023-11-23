@@ -13,6 +13,10 @@
     background-color: $background1;
     color: white;
   }
+  &__link {
+    text-decoration: none;
+    text-decoration-style: none;
+  }
 
   &-list {
     display: flex;
@@ -24,6 +28,8 @@
     font-size: 0.85rem;
     font-weight: 500;
     color: #fff;
+    text-decoration: none;
+    text-decoration-style: none;
   }
   &__date {
     font-size: 0.875rem;
