@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LinearProgress, createTheme, useRadioGroup } from "@mui/material";
+import { LinearProgress, createTheme } from "@mui/material";
 import "./ThreadList.scss";
 import { ThemeProvider } from "@emotion/react";
 import { Add } from "@mui/icons-material";

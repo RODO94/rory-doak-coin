@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Homepage from "./pages/Homepage/Homepage";
 import Header from "./components/Header/Header";
@@ -15,6 +15,10 @@ function App() {
           <Route path="/" element={<LogIn />} />
           <Route path="/threads/:userId" element={<Threads />} />
           <Route path="/threads/:userId/:threadId" element={<Threads />} />
+          <Route
+            path="/threads/:userId/:threadId/:runId"
+            element={<Threads />}
+          />
         </Routes>
       </div>
     </BrowserRouter>

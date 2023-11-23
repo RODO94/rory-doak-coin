@@ -8,7 +8,7 @@ import {
   createTheme,
 } from "@mui/material";
 
-export default function ChatInput({ handleClick }) {
+export default function ChatInput({ handleClick, loadingIcon }) {
   const theme = createTheme({
     palette: {
       primary: { main: "#026052" },
@@ -31,7 +31,7 @@ export default function ChatInput({ handleClick }) {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton type="submit" aria-label="send message button">
-                  <Send className="chat-window__icon" color="primary" />
+                  {loadingIcon}
                 </IconButton>
               </InputAdornment>
             ),

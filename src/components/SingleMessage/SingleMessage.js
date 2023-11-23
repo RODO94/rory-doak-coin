@@ -1,8 +1,4 @@
-import { useState } from "react";
 import "./SingleMessage.scss";
-import { SmartToy } from "@mui/icons-material";
-import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material";
 import { marked } from "marked";
 
 export default function SingleMessage({ role, content }) {
