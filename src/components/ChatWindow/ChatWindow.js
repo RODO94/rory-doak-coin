@@ -10,6 +10,7 @@ import { Send } from "@mui/icons-material";
 export default function ChatWindow() {
   const { userId, threadId } = useParams();
   const [messageArray, setMessageArray] = useState(null);
+  const [imageArray, setImageArray] = useState(null);
   const [isRunComplete, SetIsRunCompelete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const assistantId = "asst_7VYbIXPEu7YKYSv7aMeJviCY";
@@ -27,10 +28,13 @@ export default function ChatWindow() {
       content: event.target.message.value,
     };
     SetIsRunCompelete(false);
+
     // Add Message
     addMessage(bodyObj);
+
     // Run Thread
     runThread(assistantId, threadId);
+
     // Check Thread Status
     getRunStatus(threadId, runId);
     getMessageList();
@@ -90,8 +94,16 @@ export default function ChatWindow() {
       const { data } = await axios.get(
         `http://localhost:8080/threads/${threadId}/message`
       );
-      console.log(data);
-      setMessageArray(data);
+
+      const filteredMessageArray = data.filter(
+        (response) => response.type === "text"
+      );
+
+      const filteredImageArray = data.filter(
+        (response) => response.type === "image_file"
+      );
+      setMessageArray(filteredMessageArray);
+      setImageArray(filteredImageArray);
     } catch (error) {
       console.error(error.message);
     }
@@ -121,19 +133,13 @@ export default function ChatWindow() {
           {" "}
           {messageArray
             .sort((a, b) => b.created_at - a.created_at)
-            .map((message) => {
-              let messageContent = "";
-              if (message.content.length === 1) {
-                messageContent = message.content[0].text.value;
-              }
-              return (
-                <SingleMessage
-                  key={message.id}
-                  role={message.role}
-                  content={messageContent}
-                />
-              );
-            })}
+            .map((message) => (
+              <SingleMessage
+                key={message.id}
+                role={message.role}
+                content={message.content}
+              />
+            ))}
         </div>
         <ChatInput loadingIcon={loadingIcon} handleClick={handleClick} />
       </article>
