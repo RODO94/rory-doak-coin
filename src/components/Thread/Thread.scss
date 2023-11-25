@@ -9,13 +9,17 @@
   border-radius: 1.875rem;
   text-decoration: none;
   text-decoration-style: none;
+  margin-bottom: 1rem;
   &:hover {
     background-color: $background1;
     color: white;
   }
   &__link {
     text-decoration: none;
-    text-decoration-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   &-list {

@@ -1,0 +1,15 @@
+.image__loading {
+  text-align: center;
+  color: #0260525c;
+}
+
+.image-window {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  &__img {
+    height: 100%;
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }
+}

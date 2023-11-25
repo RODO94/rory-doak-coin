@@ -9,9 +9,7 @@ export default function Thread({ threadId, userId, name }) {
         <strong className="thread__title">{name}</strong>
         <div className="thread__container">
           <p className="thread__date"></p>
-          <button className="thread__button">
-            <img className="thread__icon" src={downArrow} alt="expand arrow" />
-          </button>
+          <img className="thread__icon" src={downArrow} alt="expand arrow" />
         </div>
       </Link>
     </article>

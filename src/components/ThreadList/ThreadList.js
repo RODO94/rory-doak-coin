@@ -57,7 +57,7 @@ export default function ThreadList({ userId }) {
           onClick={handleCreateThread}
           className="threads-section__save-button"
         >
-          Save thread
+          New thread
           <span className="threads-section__icon">
             <Add color="primary" />
           </span>

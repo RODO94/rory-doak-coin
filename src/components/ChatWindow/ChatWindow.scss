@@ -11,7 +11,7 @@
     border: 1px solid $nav;
     height: 35%;
     border-radius: 2.1875rem;
-    padding: 1.5rem;
+    padding: 0.5rem;
   }
   &__messages {
     height: 45%;
@@ -53,5 +53,12 @@
     align-items: center;
     justify-content: center;
     font-family: "Roboto", sans-serif, monospace;
+  }
+}
+
+.progress {
+  display: block;
+  &--none {
+    display: none;
   }
 }

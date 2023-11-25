@@ -4,8 +4,9 @@ import ChatInput from "../ChatInput/ChatInput";
 import SingleMessage from "../SingleMessage/SingleMessage";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, LinearProgress } from "@mui/material";
 import { Send } from "@mui/icons-material";
+import ImageWindow from "../ImageWindow/ImageWindow";
 
 export default function ChatWindow() {
   const { userId, threadId } = useParams();
@@ -28,7 +29,7 @@ export default function ChatWindow() {
       content: event.target.message.value,
     };
     SetIsRunCompelete(false);
-
+    console.log(isRunComplete);
     // Add Message
     addMessage(bodyObj);
 
@@ -61,9 +62,15 @@ export default function ChatWindow() {
         assistantObj
       );
       runId = data.id;
+      let statusObj = {};
+      SetIsRunCompelete(false);
+      console.log(runId);
+      console.log(isRunComplete);
+      console.log("before While");
       while (!isRunComplete) {
-        const statusObj = await getRunStatus(threadId, runId);
-
+        statusObj = await getRunStatus(threadId, runId);
+        console.log(statusObj.status);
+        console.log(statusObj.completed_at);
         if (statusObj.completed_at !== null) {
           getMessageList();
           setIsLoading(false);
@@ -71,6 +78,8 @@ export default function ChatWindow() {
           return SetIsRunCompelete(true);
         }
       }
+      SetIsRunCompelete(false);
+      console.log("After While");
       return data;
     } catch (error) {
       console.error(error.message);
@@ -110,9 +119,8 @@ export default function ChatWindow() {
   };
 
   useEffect(() => {
-    console.log("starting useEffect");
     getMessageList();
-    console.log("ending useEffect");
+    SetIsRunCompelete(false);
   }, [threadId, runId, isRunComplete]);
 
   const loadingIcon = isLoading ? (
@@ -128,7 +136,9 @@ export default function ChatWindow() {
   return (
     <div className="chat-window__container">
       <article className="chat-window">
-        <div className="chat-window__image">This will display images</div>
+        <div className="chat-window__image">
+          <ImageWindow imageArray={imageArray} />
+        </div>
         <div className="chat-window__messages">
           {" "}
           {messageArray
