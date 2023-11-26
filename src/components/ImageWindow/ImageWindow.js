@@ -16,6 +16,7 @@ export default function ImageWindow({ imageArray }) {
   const theme = createTheme({
     palette: {
       primary: { main: "#026052" },
+      secondary: { main: "#02605240" },
     },
   });
 
@@ -49,17 +50,22 @@ export default function ImageWindow({ imageArray }) {
 
   const handlePrev = () => {
     if (activeImageIndex - 1 < 0) {
-      setActiveImageIndex(imageArray.length - 1);
+      setActiveImageIndex((i) => i - 1);
     }
     setActiveImageIndex(activeImageIndex - 1);
   };
 
-  const handleNext = () => {};
+  const handleNext = () => {
+    if (activeImageIndex + 1 > imageArray.length) {
+      setActiveImageIndex(0);
+    }
+    setActiveImageIndex((i) => i + 1);
+  };
 
   useEffect(() => {
     setSortedImageArray(sortArray(imageArray));
     createImageURL();
-  }, [imageArray]);
+  }, [imageArray, activeImageIndex]);
 
   if (!activeImageURL) {
     return <p className="image__loading">No Images Generated Yet</p>;
@@ -67,18 +73,36 @@ export default function ImageWindow({ imageArray }) {
   return (
     <section className="image-window">
       <ThemeProvider theme={theme}>
-        <Button onClick={handlePrev}>
-          <ArrowBack className="image-window__back" />
-        </Button>
-        <img className="image-window__img" src={activeImageURL} />
-        <Button onClick={handleNext}>
-          <ArrowForward className="image-window__next" />
-        </Button>
-        {/* <div>
-          {imageArray.map((image) => (
-            <Circle color="primary" />
+        <div className="image-window__wrap">
+          <Button onClick={handlePrev}>
+            <ArrowBack
+              className={
+                activeImageIndex === 0
+                  ? "image-window__back--hide"
+                  : "image-window__back"
+              }
+            />
+          </Button>
+          <img className="image-window__img" src={activeImageURL} />
+          <Button onClick={handleNext}>
+            <ArrowForward
+              className={
+                activeImageIndex === imageArray.length - 1
+                  ? "image-window__forward--hide"
+                  : "image-window__forward"
+              }
+            />
+          </Button>
+        </div>
+        <div className="image-window__circles">
+          {imageArray.map((image, index) => (
+            <Circle
+              color={index === activeImageIndex ? "primary" : "secondary"}
+              fontSize="small"
+              className="image-window__circle"
+            />
           ))}
-        </div> */}
+        </div>
       </ThemeProvider>
     </section>
   );
