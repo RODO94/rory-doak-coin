@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { LinearProgress, createTheme } from "@mui/material";
 import "./ThreadList.scss";
 import { ThemeProvider } from "@emotion/react";
-import { Add } from "@mui/icons-material";
 import Thread from "../Thread/Thread";
 import axios from "axios";
+import NewThread from "../NewThread/NewThread";
+import AddThread from "../AddThread/AddThread";
 
 export default function ThreadList({ userId }) {
   const [threadArray, setThreadArray] = useState(null);
-  const [newThreadCreated, setNewThreadCreated] = useState(false);
+  const [isAddClicked, setIsAddClicked] = useState(false);
   const theme = createTheme({
     palette: {
       primary: { main: "#ffffff" },
@@ -19,21 +20,15 @@ export default function ThreadList({ userId }) {
     setThreadArray(data);
   };
 
-  const handleCreateThread = async (event) => {
-    try {
-      setNewThreadCreated(true);
-      const newThread = await axios.post(
-        "http://localhost:8080/threads/create"
-      );
-      console.log(newThread);
-      getThreads();
-    } catch (error) {}
+  const handleNewThread = () => {
+    setIsAddClicked(true);
   };
 
+  const addThreadName = <NewThread setThreadArray={setThreadArray} />;
   useEffect(() => {
     getThreads();
-    setNewThreadCreated(false);
-  }, [userId, newThreadCreated]);
+    setIsAddClicked(false);
+  }, [userId]);
 
   if (!threadArray) {
     return <LinearProgress />;
@@ -45,14 +40,20 @@ export default function ThreadList({ userId }) {
         {threadArray.map((thread) => (
           <Thread
             key={thread.id}
-            name={`Thread ${thread.thread_id[10]}`}
+            name={`${thread.thread_name}`}
             userId={userId}
             threadId={thread.thread_id}
           />
         ))}
       </section>
       <ThemeProvider theme={theme}>
-        <button
+        {isAddClicked ? (
+          <NewThread setThreadArray={setThreadArray} />
+        ) : (
+          <AddThread handleNewThread={handleNewThread} />
+        )}
+
+        {/* <button
           onClick={handleCreateThread}
           className="threads-section__save-button"
         >
@@ -60,7 +61,7 @@ export default function ThreadList({ userId }) {
           <span className="threads-section__icon">
             <Add color="primary" />
           </span>
-        </button>
+        </button> */}
       </ThemeProvider>
     </section>
   );

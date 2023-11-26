@@ -1,10 +1,10 @@
 import "./ChatWindow.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ChatInput from "../ChatInput/ChatInput";
 import SingleMessage from "../SingleMessage/SingleMessage";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { CircularProgress, LinearProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { Send } from "@mui/icons-material";
 import ImageWindow from "../ImageWindow/ImageWindow";
 
