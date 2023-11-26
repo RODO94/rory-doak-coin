@@ -1,6 +1,5 @@
 import "./LineGraph.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { ResponsiveLine } from "@nivo/line";
 import { fetchWeeklySpend } from "../../utils/AxiosRequests";
 

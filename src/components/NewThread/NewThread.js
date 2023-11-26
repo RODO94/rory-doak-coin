@@ -9,7 +9,7 @@ import {
 import { Add } from "@mui/icons-material";
 import axios from "axios";
 import { useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 export default function NewThread({ setThreadArray }) {
   const [newThreadCreated, setNewThreadCreated] = useState(false);

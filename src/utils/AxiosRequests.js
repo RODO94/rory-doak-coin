@@ -1,6 +1,4 @@
 import axios from "axios";
-import { arc } from "d3-shape";
-import { async } from "q";
 
 const baseURL = `http://localhost:${process.env.REACT_APP_PORT}`;
 
