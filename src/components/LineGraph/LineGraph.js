@@ -2,16 +2,14 @@ import "./LineGraph.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ResponsiveLine } from "@nivo/line";
+import { fetchWeeklySpend } from "../../utils/AxiosRequests";
 
 export default function LineGraph() {
   const [lineData, setLineData] = useState(null);
   const [isSlices, setIsSlices] = useState(false);
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get(
-        "http://localhost:8080/transactions/weekly"
-      );
-      return setLineData(data);
+      return setLineData(await fetchWeeklySpend());
     };
     getData();
   }, []);

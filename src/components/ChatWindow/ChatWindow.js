@@ -3,10 +3,15 @@ import { useEffect, useState } from "react";
 import ChatInput from "../ChatInput/ChatInput";
 import SingleMessage from "../SingleMessage/SingleMessage";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import { Send } from "@mui/icons-material";
 import ImageWindow from "../ImageWindow/ImageWindow";
+import {
+  addMessage,
+  fetchMessageList,
+  getRunStatus,
+  runThread,
+} from "../../utils/AxiosRequests";
 
 export default function ChatWindow() {
   const { userId, threadId } = useParams();
@@ -20,7 +25,7 @@ export default function ChatWindow() {
 
   const handleClick = (event) => {
     event.preventDefault();
-    getMessageList();
+    getMessageList(threadId);
     setIsLoading(true);
 
     // Format Message
@@ -29,12 +34,11 @@ export default function ChatWindow() {
       content: event.target.message.value,
     };
     SetIsRunCompelete(false);
-    console.log(isRunComplete);
     // Add Message
-    addMessage(bodyObj);
+    addMessage(bodyObj, threadId);
 
     // Run Thread
-    runThread(assistantId, threadId);
+    startRun(assistantId, threadId);
 
     // Check Thread Status
     getRunStatus(threadId, runId);
@@ -43,34 +47,15 @@ export default function ChatWindow() {
     event.target.reset();
   };
 
-  const getRunStatus = async (threadId, runId) => {
-    try {
-      const { data } = await axios.get(
-        `http://localhost:8080/threads/${threadId}/${runId}`
-      );
-      return data;
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  const runThread = async (assistantId, threadId) => {
+  const startRun = async (assistantId, threadId) => {
     try {
       const assistantObj = { assistant_id: assistantId };
-      const { data } = await axios.post(
-        `http://localhost:8080/threads/${threadId}/run`,
-        assistantObj
-      );
+      const data = await runThread(threadId, assistantObj);
       runId = data.id;
       let statusObj = {};
       SetIsRunCompelete(false);
-      console.log(runId);
-      console.log(isRunComplete);
-      console.log("before While");
       while (!isRunComplete) {
         statusObj = await getRunStatus(threadId, runId);
-        console.log(statusObj.status);
-        console.log(statusObj.completed_at);
         if (statusObj.completed_at !== null) {
           getMessageList();
           setIsLoading(false);
@@ -79,19 +64,6 @@ export default function ChatWindow() {
         }
       }
       SetIsRunCompelete(false);
-      console.log("After While");
-      return data;
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  const addMessage = async (bodyObj) => {
-    try {
-      const { data } = await axios.post(
-        `http://localhost:8080/threads/${threadId}/message`,
-        bodyObj
-      );
       return data;
     } catch (error) {
       console.error(error.message);
@@ -100,10 +72,7 @@ export default function ChatWindow() {
 
   const getMessageList = async () => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/threads/${threadId}/message`
-      );
-
+      const data = await fetchMessageList(threadId);
       const filteredMessageArray = data.filter(
         (response) => response.type === "text"
       );

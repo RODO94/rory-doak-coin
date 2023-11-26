@@ -1,20 +1,17 @@
 import { ResponsiveBar } from "@nivo/bar";
 import "./BarGraph.scss";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { fetchBalanceData } from "../../utils/AxiosRequests";
 
 export default function BarGraph() {
   const [data, setData] = useState([1, 2, 3, 4]);
   const { userId } = useParams();
   useEffect(() => {
-    const fetchBalanceData = async () => {
-      const balances = await axios.get(
-        `http://localhost:8080/accounts/connections/${userId}`
-      );
-      setData(balances.data);
+    const getBalances = async () => {
+      setData(await fetchBalanceData(userId));
     };
-    fetchBalanceData();
+    getBalances();
   }, [userId]);
 
   const colors = {

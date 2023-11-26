@@ -93,6 +93,7 @@ export default function ImageWindow({ imageArray }) {
           </Button>
           {imageArray.map((image, index) => (
             <Circle
+              key={index}
               color={index === activeImageIndex ? "primary" : "secondary"}
               fontSize="small"
               className="image-window__circle"
