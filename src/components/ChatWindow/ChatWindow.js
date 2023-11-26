@@ -136,9 +136,6 @@ export default function ChatWindow() {
   return (
     <div className="chat-window__container">
       <article className="chat-window">
-        <div className="chat-window__image">
-          <ImageWindow imageArray={imageArray} />
-        </div>
         <div className="chat-window__messages">
           {" "}
           {messageArray
@@ -153,6 +150,9 @@ export default function ChatWindow() {
         </div>
         <ChatInput loadingIcon={loadingIcon} handleClick={handleClick} />
       </article>
+      <div className="chat-window__image">
+        <ImageWindow imageArray={imageArray} />
+      </div>
     </div>
   );
 }

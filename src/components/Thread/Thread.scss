@@ -3,13 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
   gap: 0.88rem;
   border: 1px solid $nav;
   border-radius: 1.875rem;
   text-decoration: none;
-  text-decoration-style: none;
   margin-bottom: 1rem;
+  width: 15%;
+  min-width: 100px;
   &:hover {
     background-color: $background1;
     color: white;
@@ -17,9 +17,13 @@
   &__link {
     text-decoration: none;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 1rem;
   }
 
   &-list {
@@ -34,6 +38,7 @@
     color: #fff;
     text-decoration: none;
     text-decoration-style: none;
+    text-wrap: nowrap;
   }
   &__date {
     font-size: 0.875rem;

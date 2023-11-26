@@ -50,14 +50,14 @@ export default function ImageWindow({ imageArray }) {
 
   const handlePrev = () => {
     if (activeImageIndex - 1 < 0) {
-      setActiveImageIndex((i) => i - 1);
+      return setActiveImageIndex(imageArray.length - 1);
     }
-    setActiveImageIndex(activeImageIndex - 1);
+    setActiveImageIndex((i) => i - 1);
   };
 
   const handleNext = () => {
-    if (activeImageIndex + 1 > imageArray.length) {
-      setActiveImageIndex(0);
+    if (activeImageIndex + 1 >= imageArray.length) {
+      return setActiveImageIndex(0);
     }
     setActiveImageIndex((i) => i + 1);
   };
@@ -74,8 +74,16 @@ export default function ImageWindow({ imageArray }) {
     <section className="image-window">
       <ThemeProvider theme={theme}>
         <div className="image-window__wrap">
-          <Button onClick={handlePrev}>
+          <img className="image-window__img" src={activeImageURL} />
+        </div>
+        <div className="image-window__circles">
+          <Button
+            className="image-window__button"
+            size="small"
+            onClick={handlePrev}
+          >
             <ArrowBack
+              fontSize="small"
               className={
                 activeImageIndex === 0
                   ? "image-window__back--hide"
@@ -83,18 +91,6 @@ export default function ImageWindow({ imageArray }) {
               }
             />
           </Button>
-          <img className="image-window__img" src={activeImageURL} />
-          <Button onClick={handleNext}>
-            <ArrowForward
-              className={
-                activeImageIndex === imageArray.length - 1
-                  ? "image-window__forward--hide"
-                  : "image-window__forward"
-              }
-            />
-          </Button>
-        </div>
-        <div className="image-window__circles">
           {imageArray.map((image, index) => (
             <Circle
               color={index === activeImageIndex ? "primary" : "secondary"}
@@ -102,6 +98,20 @@ export default function ImageWindow({ imageArray }) {
               className="image-window__circle"
             />
           ))}
+          <Button
+            className="image-window__button"
+            size="small"
+            onClick={handleNext}
+          >
+            <ArrowForward
+              fontSize="small"
+              className={
+                activeImageIndex === imageArray.length - 1
+                  ? "image-window__forward--hide"
+                  : "image-window__forward"
+              }
+            />
+          </Button>
         </div>
       </ThemeProvider>
     </section>

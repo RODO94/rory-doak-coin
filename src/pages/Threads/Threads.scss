@@ -1,22 +1,20 @@
 @use "../../styles/partials/_variables" as *;
 .threads {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 3.25rem;
+  gap: 1rem;
   padding-bottom: 5rem;
   &-chat {
     border-radius: 2.1875rem;
     box-shadow: 0px 4px 4px 0px rgba(2, 96, 82, 0.3);
-    margin-top: 2.69rem;
     margin-right: 6.25rem;
-    width: 100%;
+    margin-left: 6.25rem;
     padding: 1.88rem;
     background-color: #fff;
   }
   &-section {
-    height: 100%;
-    width: 30%;
+    height: 30%;
     padding: 0rem 2.25rem 2rem 2.25rem;
     background-color: $background2;
     display: flex;
@@ -25,6 +23,14 @@
     border-radius: 2.1875rem;
     margin-top: 2.69rem;
     margin-left: 6.25rem;
+    margin-right: 6.25rem;
+    &__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
     &__title {
       font-size: 1.625rem;
       font-weight: 700;
@@ -33,7 +39,7 @@
       display: inline;
       width: 40%;
       margin: 0;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1rem;
       margin-top: 1.9rem;
     }
 
@@ -57,8 +63,8 @@
     &__save-button {
       background-color: transparent;
       outline: none;
-      height: 3rem;
-      width: 100%;
+      height: 2.7rem;
+      width: 30%;
       position: relative;
       margin: 0;
       text-align: right;
@@ -70,10 +76,11 @@
       border-radius: 1.875rem;
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
       padding-right: 1rem;
       padding-left: 2.75rem;
+      box-shadow: 1px 1px 1px 1px rgba(2, 96, 82, 0.3);
 
       &:hover {
         cursor: pointer;
@@ -87,12 +94,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 2.5rem;
-      width: 2.5rem;
+      height: 2.8rem;
+      width: 2.8rem;
       position: absolute;
       left: 0;
-      top: 0.25rem;
-      border-bottom: 1px solid $background1;
+      top: 0rem;
     }
   }
 }

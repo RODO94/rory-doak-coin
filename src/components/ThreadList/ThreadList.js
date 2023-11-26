@@ -41,7 +41,7 @@ export default function ThreadList({ userId }) {
   return (
     <section className="threads-section">
       <h2 className="threads-section__title">Threads</h2>
-      <section>
+      <section className="threads-section__list">
         {threadArray.map((thread) => (
           <Thread
             key={thread.id}
@@ -51,7 +51,6 @@ export default function ThreadList({ userId }) {
           />
         ))}
       </section>
-      <div className="threads-section__wrap"></div>
       <ThemeProvider theme={theme}>
         <button
           onClick={handleCreateThread}
