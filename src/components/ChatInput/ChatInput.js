@@ -21,7 +21,7 @@ export default function ChatInput({ handleClick, loadingIcon }) {
       <ThemeProvider theme={theme}>
         <TextField
           id="message"
-          label="Send a message to your assistant"
+          label="Send a message"
           color="primary"
           maxRows={4}
           aria-label={ariaLabel}

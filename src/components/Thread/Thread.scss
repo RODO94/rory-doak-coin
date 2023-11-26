@@ -1,4 +1,6 @@
 @use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/_mixins" as *;
+
 .thread {
   display: flex;
   justify-content: space-between;
@@ -6,9 +8,11 @@
   gap: 0.88rem;
   border: 1px solid $nav;
   border-radius: 1.875rem;
-  text-decoration: none;
-  margin-bottom: 1rem;
-  min-width: 100px;
+
+  @include tablet {
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
   &:hover {
     background-color: $background1;
     color: white;
@@ -21,8 +25,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap;
     margin: 1rem;
+    flex-wrap: nowrap;
+    @include tablet {
+    }
   }
 
   &-list {

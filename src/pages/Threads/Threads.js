@@ -1,6 +1,7 @@
 import "./Threads.scss";
 import ThreadList from "../../components/ThreadList/ThreadList";
 import ChatWindow from "../../components/ChatWindow/ChatWindow";
+import MobileNav from "../../components/MobileNav/MobileNav";
 import { useParams } from "react-router-dom";
 
 export default function Threads() {
@@ -11,6 +12,7 @@ export default function Threads() {
       <section className="threads-chat">
         <ChatWindow />
       </section>
+      <MobileNav />
     </main>
   );
 }
