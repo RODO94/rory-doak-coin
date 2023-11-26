@@ -11,8 +11,6 @@ export default function Header() {
         <Link to={`/home/${userId}`} className="header__logo">
           COIN
         </Link>
-        <NavLink text={"Connections"} />
-        <NavLink text={"Loans"} />
         <NavLink route={`/threads/${userId}`} text={"Threads"} />
       </nav>
     </header>

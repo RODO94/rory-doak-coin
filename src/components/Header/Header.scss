@@ -1,9 +1,13 @@
 @use "../../styles/partials/_variables" as *;
-
+@use "../../styles/partials/_mixins" as *;
 .header {
-  margin-left: 6.25rem;
-  margin-right: 6.25rem;
-  border-bottom: 1px solid black;
+  display: none;
+  @include tablet {
+    display: block;
+    margin-left: 6.25rem;
+    margin-right: 6.25rem;
+    border-bottom: 1px solid black;
+  }
   &__logo {
     height: 4.4375rem;
     width: 8.4375rem;

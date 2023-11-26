@@ -23,7 +23,7 @@ export default function LineGraph() {
     <section className="line-graph">
       <ResponsiveLine
         data={lineData}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 20, right: 10, bottom: 85, left: 40 }}
         colors={["#f470b0", "#026052", "#03a688", "#011212", "#c03679"]}
         colorBy="index"
         xScale={{ type: "point" }}
@@ -34,7 +34,6 @@ export default function LineGraph() {
           stacked: true,
           reverse: false,
         }}
-        yFormat=" >-.2f"
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -49,7 +48,6 @@ export default function LineGraph() {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "Spend (£)",
           legendOffset: -40,
           legendPosition: "middle",
         }}
@@ -59,9 +57,6 @@ export default function LineGraph() {
             `this is week ${event.data.x} and is amount ${event.data.y} GBP`
           );
         }}
-        onMouseEnter={(point) => {
-          console.log(point);
-        }}
         pointColor={{ theme: "background" }}
         pointBorderWidth={2}
         pointBorderColor={{ from: "serieColor" }}
@@ -69,14 +64,14 @@ export default function LineGraph() {
         useMesh={true}
         legends={[
           {
-            anchor: "bottom-right",
-            direction: "column",
+            anchor: "bottom",
+            direction: "row",
             justify: false,
-            translateX: 100,
-            translateY: 0,
+            translateX: -10,
+            translateY: 70,
             itemsSpacing: 0,
-            itemDirection: "left-to-right",
-            itemWidth: 80,
+            itemDirection: "top-to-bottom",
+            itemWidth: 60,
             itemHeight: 20,
             itemOpacity: 0.75,
             symbolSize: 12,

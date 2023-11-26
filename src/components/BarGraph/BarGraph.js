@@ -2,10 +2,11 @@ import { ResponsiveBar } from "@nivo/bar";
 import "./BarGraph.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 export default function BarGraph() {
   const [data, setData] = useState([1, 2, 3, 4]);
-  const userId = "57581dd2-96b8-4402-912b-c669c16f21a2";
+  const { userId } = useParams();
   useEffect(() => {
     const fetchBalanceData = async () => {
       const balances = await axios.get(
@@ -31,45 +32,10 @@ export default function BarGraph() {
         data={data}
         keys={["savings_balance", "available_balance"]}
         indexBy="connect_known_as"
-        margin={{ top: 0, right: 0, bottom: 45, left: 0 }}
+        margin={{ top: 10, right: 0, bottom: 65, left: 0 }}
         padding={0.3}
         valueScale={{ type: "linear" }}
-        indexScale={{ type: "band", round: true }}
         colors={getColor}
-        defs={[
-          {
-            id: "dots",
-            type: "patternDots",
-            background: "inherit",
-            color: "#38bcb2",
-            size: 4,
-            padding: 1,
-            stagger: true,
-          },
-          {
-            id: "lines",
-            type: "patternLines",
-            background: "inherit",
-            color: "#eed312",
-            rotation: -45,
-            lineWidth: 6,
-            spacing: 10,
-          },
-        ]}
-        fill={[
-          {
-            match: {
-              id: "fries",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "sandwich",
-            },
-            id: "lines",
-          },
-        ]}
         borderColor={{
           from: "color",
           modifiers: [["darker", 1.6]],
@@ -80,7 +46,6 @@ export default function BarGraph() {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "Name",
           legendPosition: "middle",
           legendOffset: 32,
           truncateTickAt: 0,
@@ -89,7 +54,6 @@ export default function BarGraph() {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "food",
           legendPosition: "middle",
           legendOffset: -40,
           truncateTickAt: 0,
@@ -103,14 +67,13 @@ export default function BarGraph() {
         legends={[
           {
             dataFrom: "keys",
-            anchor: "bottom-right",
-            direction: "column",
-            justify: false,
-            translateX: 120,
-            translateY: 0,
-            itemsSpacing: 2,
+            anchor: "bottom",
+            direction: "row",
+            translateX: 0,
+            translateY: 60,
+            itemsSpacing: 25,
             itemWidth: 100,
-            itemHeight: 20,
+            itemHeight: 30,
             itemDirection: "left-to-right",
             itemOpacity: 0.85,
             symbolSize: 20,
