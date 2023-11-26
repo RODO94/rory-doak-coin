@@ -9,11 +9,12 @@ import {
 import { Add } from "@mui/icons-material";
 import axios from "axios";
 import { useState } from "react";
-import { useParams } from "react-router";
+import { Navigate, useNavigate, useParams } from "react-router";
 
 export default function NewThread({ setThreadArray }) {
   const [newThreadCreated, setNewThreadCreated] = useState(false);
   const { userId } = useParams();
+  const navigate = useNavigate();
 
   const theme = createTheme({
     palette: {
@@ -34,6 +35,7 @@ export default function NewThread({ setThreadArray }) {
         { thread_name: event.target.name.value }
       );
       getThreads();
+      navigate(`/threads/${userId}/${newThread.data}`);
       event.target.reset();
     } catch (error) {}
   };

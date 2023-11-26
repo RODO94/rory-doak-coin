@@ -24,7 +24,6 @@ export default function ThreadList({ userId }) {
     setIsAddClicked(true);
   };
 
-  const addThreadName = <NewThread setThreadArray={setThreadArray} />;
   useEffect(() => {
     getThreads();
     setIsAddClicked(false);
@@ -52,16 +51,6 @@ export default function ThreadList({ userId }) {
         ) : (
           <AddThread handleNewThread={handleNewThread} />
         )}
-
-        {/* <button
-          onClick={handleCreateThread}
-          className="threads-section__save-button"
-        >
-          New thread
-          <span className="threads-section__icon">
-            <Add color="primary" />
-          </span>
-        </button> */}
       </ThemeProvider>
     </section>
   );
