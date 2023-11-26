@@ -8,7 +8,9 @@ export default function Header() {
   return (
     <header className="header">
       <nav className="header__nav">
-        <Link to={"/"} className="header__logo"></Link>
+        <Link to={`/home/${userId}`} className="header__logo">
+          COIN
+        </Link>
         <NavLink text={"Connections"} />
         <NavLink text={"Loans"} />
         <NavLink route={`/threads/${userId}`} text={"Threads"} />

@@ -6,9 +6,17 @@
   border-bottom: 1px solid black;
   &__logo {
     height: 4.4375rem;
-    width: 4.4375rem;
-    border-radius: 50%;
-    background-color: $background1;
+    width: 8.4375rem;
+    border-radius: 1rem;
+    background-color: $nav;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
   }
   &__nav {
     padding: 3.31rem 0rem 1.88rem 0rem;

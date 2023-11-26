@@ -1,5 +1,5 @@
 import "./LogIn.scss";
-import bigMain from "../../assets/thebigman.jpg";
+import bigMan from "../../assets/thebigman.jpg";
 import { Link } from "react-router-dom";
 
 export default function LogIn() {
@@ -9,7 +9,7 @@ export default function LogIn() {
     <main className="log-in">
       <section className="log-in__section">
         <div className="log-in__profile">
-          <img className="log-in__img" src={bigMain} alt="the big man" />
+          <img className="log-in__img" src={bigMan} alt="the big man" />
         </div>
         <Link className="log-in__link" to={`/home/${userId}`}>
           Log In
