@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# rory-doak-coin-server
+## Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+What is your app? Brief description in a couple of sentences.
 
-## Available Scripts
+_Moné is a **financial connectivity app** which allows you to connect with your friends, see how you compare, exchange money, and connect with your personal finances._
 
-In the project directory, you can run:
+### Features
 
-### `npm start`
+List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Dashboard to see a graphical representation of your finances and the finances of your connections
+2. AI enabled chatbot which takes your personal transaction data
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Tech Stack
 
-### `npm test`
+List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Node JS
+- MySQL
+- React Router
+- Nivo (data vis)
+- Mui Core
+- Knex
+- Express
+- OpenAI Assistants API
 
-### `npm run build`
+### How to get going
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Please npm i at the beginning to install all relevant npm packages.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You will need an OpenAI key to begin working with the AI chat bot, this can be provided if necessary (if not already).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For the back-end, please populate the Database with provided Migration and Seed files - please run all of the migrations prior to running the Seed files.
 
-### `npm run eject`
+The key for testing is for all 4 test users having an account balance, transactions, and at least 1 connection. From there you can push through.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A yearly transaction file should be provided for the assistant to run checks on how it refers to the data. Please seek assistance if this does not work
