@@ -37,3 +37,6 @@ For the back-end, please populate the Database with provided Migration and Seed 
 The key for testing is for all 4 test users having an account balance, transactions, and at least 1 connection. From there you can push through.
 
 A yearly transaction file should be provided for the assistant to run checks on how it refers to the data. Please seek assistance if this does not work
+
+.env example:
+REACT_APP_PORT=8080
