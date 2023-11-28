@@ -33,7 +33,7 @@ export default function ConnectionList() {
         return (
           <ConnectionCard
             key={connection.id}
-            connectionName={connection.connect_known_as}
+            connectionName={`${connection.connect_first_name} ${connection.connect_last_name}`}
             image={
               i + 1 === 1
                 ? coder1

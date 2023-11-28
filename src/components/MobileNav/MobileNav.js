@@ -3,7 +3,7 @@ import "./MobileNav.scss";
 import { createTheme } from "@mui/system";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Telegram, Toll } from "@mui/icons-material";
+import { People, Telegram, Toll } from "@mui/icons-material";
 
 export default function Footer() {
   const theme = createTheme({
@@ -21,6 +21,9 @@ export default function Footer() {
         </Link>
         <Link to={`/threads/${userId}`}>
           <Telegram color="primary" fontSize="large" />
+        </Link>
+        <Link to={`/connections/${userId}`}>
+          <People color="primary" fontSize="large" />
         </Link>
       </ThemeProvider>
     </div>

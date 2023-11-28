@@ -1,0 +1,62 @@
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_variables" as *;
+.add-connection {
+  border-radius: 2.1875rem;
+  background: $background2;
+  padding: 1.75rem 2.25rem;
+  margin: 1rem;
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+  &__explainer {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  &__form {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  &__input {
+    background: white;
+    border-radius: 1.875rem;
+    border: 1px solid $nav;
+    height: 2.1875rem;
+    width: 100%;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    font-family: "Roboto", sans-serif, monospace;
+  }
+  &__button {
+    width: 100%;
+    font-family: "Roboto", sans-serif, monospace;
+    color: #fff;
+    background-color: $nav;
+    border: none;
+    border-radius: 1.875rem;
+    border-bottom: 1px solid var(--dark, #011212);
+    padding: 0.4rem 0;
+    font-size: 1.1875rem;
+    font-weight: 500;
+  }
+  &__warning {
+    display: flex;
+    flex-direction: row;
+    gap: 0.44rem;
+    justify-content: space-between;
+    &-icon {
+      height: 3rem;
+    }
+    &-text {
+      font-size: 0.875rem;
+      margin: 0;
+    }
+  }
+}
