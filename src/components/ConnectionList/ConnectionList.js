@@ -16,16 +16,37 @@ export default function ConnectionList() {
   useEffect(() => {
     const getConnections = async () => {
       const data = await fetchUserConnections(userId);
+      console.log(data);
       setConnectionArray(data);
     };
     getConnections();
-  }, []);
+  }, [userId]);
   if (!connectionArray) {
     return <CircularProgress />;
   }
   return (
     <div className="connection-list">
-      <ConnectionCard connectionName={"Michael"} image={coder1} />
+      {connectionArray.map((connection, i) => {
+        if (connection.user_id === connection.connect_id) {
+          return;
+        }
+        return (
+          <ConnectionCard
+            key={connection.id}
+            connectionName={connection.connect_known_as}
+            image={
+              i + 1 === 1
+                ? coder1
+                : i + 1 === 2
+                ? coder2
+                : i + 1 === 3
+                ? coder3
+                : coder1
+            }
+            connectionElement={connection}
+          />
+        );
+      })}
     </div>
   );
 }
