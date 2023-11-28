@@ -7,9 +7,9 @@ import {
   createTheme,
 } from "@mui/material";
 import { Add } from "@mui/icons-material";
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { createThread, fetchThreads } from "../../utils/AxiosRequests";
 
 export default function NewThread({ setThreadArray }) {
   const [newThreadCreated, setNewThreadCreated] = useState(false);
@@ -22,7 +22,7 @@ export default function NewThread({ setThreadArray }) {
     },
   });
   const getThreads = async () => {
-    const { data } = await axios.get(`http://localhost:8080/threads/${userId}`);
+    const { data } = await fetchThreads(userId);
     setThreadArray(data);
   };
 
@@ -30,10 +30,8 @@ export default function NewThread({ setThreadArray }) {
     event.preventDefault();
     try {
       setNewThreadCreated(true);
-      const newThread = await axios.post(
-        "http://localhost:8080/threads/create",
-        { thread_name: event.target.name.value }
-      );
+      const threadObj = { thread_name: event.target.name.value };
+      const newThread = await createThread(threadObj);
       getThreads();
       navigate(`/threads/${userId}/${newThread.data}`);
       event.target.reset();

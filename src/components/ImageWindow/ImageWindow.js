@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { ArrowBack, ArrowForward, Circle } from "@mui/icons-material";
 import { Button, Skeleton, createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { getImage } from "../../utils/AxiosRequests";
 
 export default function ImageWindow({ imageArray }) {
   const [activeImageURL, setActiveImageURL] = useState(null);
@@ -22,15 +23,14 @@ export default function ImageWindow({ imageArray }) {
 
   const createImageURL = async () => {
     if (imageArray.length === 0) {
-      console.log("condition triggered");
       setIsThereImage(false);
       setActiveImageURL(null);
       return;
     } else {
       setIsThereImage(true);
-      const { data } = await axios.get(
-        `http://localhost:8080/threads/${threadId}/file/${imageArray[activeImageIndex].file_id}`,
-        { responseType: "blob" }
+      const data = await getImage(
+        threadId,
+        imageArray[activeImageIndex].file_id
       );
       const newUrl = URL.createObjectURL(data);
       setActiveImageURL(newUrl);

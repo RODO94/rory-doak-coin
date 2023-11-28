@@ -1,5 +1,5 @@
 import "./ChatWindow.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatInput from "../ChatInput/ChatInput";
 import SingleMessage from "../SingleMessage/SingleMessage";
 import { useParams } from "react-router-dom";
@@ -19,9 +19,14 @@ export default function ChatWindow() {
   const [imageArray, setImageArray] = useState(null);
   const [isRunComplete, SetIsRunCompelete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const bottomDiv = useRef(null);
   const assistantId = "asst_7VYbIXPEu7YKYSv7aMeJviCY";
 
   let runId = "";
+
+  const scrolltoBottom = () => {
+    bottomDiv.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -73,6 +78,7 @@ export default function ChatWindow() {
   const getMessageList = async () => {
     try {
       const data = await fetchMessageList(threadId);
+
       const filteredMessageArray = data.filter(
         (response) => response.type === "text"
       );
@@ -90,6 +96,7 @@ export default function ChatWindow() {
   useEffect(() => {
     getMessageList();
     SetIsRunCompelete(false);
+    scrolltoBottom();
   }, [threadId, runId, isRunComplete]);
 
   const loadingIcon = isLoading ? (
@@ -116,6 +123,7 @@ export default function ChatWindow() {
                 content={message.content}
               />
             ))}
+          <div ref={bottomDiv} className="chat-window__bottom"></div>
         </div>
         <ChatInput loadingIcon={loadingIcon} handleClick={handleClick} />
       </article>

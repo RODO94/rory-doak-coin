@@ -64,6 +64,28 @@ const runThread = async (threadId, assistantObj) => {
   }
 };
 
+const getImage = async (threadId, fileId) => {
+  try {
+    const { data } = await axios.get(
+      `${baseURL}/threads/${threadId}/file/${fileId}`,
+      { responseType: "blob" }
+    );
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+const fetchThreads = async (userId) => {
+  const { data } = await axios.get(`${baseURL}/threads/${userId}`);
+  return data;
+};
+
+const createThread = async (threadObj) => {
+  const newThread = await axios.post(`${baseURL}/threads/create`, threadObj);
+  return newThread;
+};
+
 export {
   fetchBalanceData,
   fetchWeeklySpend,
@@ -71,4 +93,7 @@ export {
   addMessage,
   fetchMessageList,
   runThread,
+  getImage,
+  fetchThreads,
+  createThread,
 };

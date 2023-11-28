@@ -27,6 +27,7 @@
     gap: 0.5rem;
     @include desktop {
       flex-wrap: wrap;
+      overflow-x: auto;
     }
   }
   &__title {
