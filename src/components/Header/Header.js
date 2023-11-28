@@ -12,6 +12,7 @@ export default function Header() {
           COIN
         </Link>
         <NavLink route={`/threads/${userId}`} text={"Threads"} />
+        <NavLink route={`/connections/${userId}`} text={"Connections"} />
       </nav>
     </header>
   );

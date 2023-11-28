@@ -13,6 +13,15 @@ const fetchBalanceData = async (userId) => {
   }
 };
 
+const fetchUserConnections = async (userId) => {
+  try {
+    const { data } = await axios.get(`${baseURL}/users/connections/${userId}`);
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
 const fetchWeeklySpend = async () => {
   try {
     const { data } = await axios.get(`${baseURL}/transactions/weekly`);
@@ -96,4 +105,5 @@ export {
   getImage,
   fetchThreads,
   createThread,
+  fetchUserConnections,
 };
