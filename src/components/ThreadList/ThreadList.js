@@ -6,10 +6,12 @@ import Thread from "../Thread/Thread";
 import axios from "axios";
 import NewThread from "../NewThread/NewThread";
 import AddThread from "../AddThread/AddThread";
+import { useParams } from "react-router-dom";
 
 export default function ThreadList({ userId }) {
   const [threadArray, setThreadArray] = useState(null);
   const [isAddClicked, setIsAddClicked] = useState(false);
+  const { threadId } = useParams();
   const theme = createTheme({
     palette: {
       primary: { main: "#ffffff" },
@@ -20,6 +22,8 @@ export default function ThreadList({ userId }) {
     setIsAddClicked(true);
   };
 
+  console.log(threadArray);
+
   useEffect(() => {
     const getThreads = async () => {
       const { data } = await axios.get(
@@ -29,7 +33,7 @@ export default function ThreadList({ userId }) {
     };
     getThreads();
     setIsAddClicked(false);
-  }, [userId]);
+  }, [userId, threadId]);
 
   if (!threadArray) {
     return <LinearProgress />;
