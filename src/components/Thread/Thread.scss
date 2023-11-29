@@ -8,6 +8,10 @@
   gap: 0.88rem;
   border: 1px solid $nav;
   border-radius: 1.875rem;
+  padding: 0.75rem;
+  &--active {
+    background-color: $background1;
+  }
 
   @include tablet {
     text-decoration: none;

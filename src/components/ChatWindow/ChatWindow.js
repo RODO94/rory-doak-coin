@@ -25,7 +25,7 @@ export default function ChatWindow() {
   let runId = "";
 
   const scrolltoBottom = () => {
-    bottomDiv.current?.scrollIntoView({ behavior: "smooth" });
+    bottomDiv.current.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleClick = (event) => {
@@ -79,15 +79,20 @@ export default function ChatWindow() {
     try {
       const data = await fetchMessageList(threadId);
 
-      const filteredMessageArray = data.filter(
-        (response) => response.type === "text"
-      );
+      if (data) {
+        const filteredMessageArray = data.filter(
+          (response) => response.type === "text"
+        );
 
-      const filteredImageArray = data.filter(
-        (response) => response.type === "image_file"
-      );
-      setMessageArray(filteredMessageArray);
-      setImageArray(filteredImageArray);
+        const filteredImageArray = data.filter(
+          (response) => response.type === "image_file"
+        );
+        setMessageArray(filteredMessageArray);
+        setImageArray(filteredImageArray);
+        return;
+      } else {
+        return;
+      }
     } catch (error) {
       console.error(error.message);
     }
