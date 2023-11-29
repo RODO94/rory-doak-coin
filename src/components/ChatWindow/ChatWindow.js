@@ -12,6 +12,7 @@ import {
   getRunStatus,
   runThread,
 } from "../../utils/AxiosRequests";
+import { NULL } from "sass";
 
 export default function ChatWindow() {
   const { userId, threadId } = useParams();
@@ -25,12 +26,15 @@ export default function ChatWindow() {
   let runId = "";
 
   const scrolltoBottom = () => {
-    bottomDiv.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    bottomDiv.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start",
+    });
   };
 
   const handleClick = (event) => {
     event.preventDefault();
-    getMessageList(threadId);
     setIsLoading(true);
 
     // Format Message
@@ -41,6 +45,7 @@ export default function ChatWindow() {
     SetIsRunCompelete(false);
     // Add Message
     addMessage(bodyObj, threadId);
+    getMessageList(threadId);
 
     // Run Thread
     startRun(assistantId, threadId);
@@ -101,8 +106,11 @@ export default function ChatWindow() {
   useEffect(() => {
     getMessageList();
     SetIsRunCompelete(false);
-    scrolltoBottom();
   }, [threadId, runId, isRunComplete]);
+
+  useEffect(() => {
+    scrolltoBottom();
+  }, [messageArray]);
 
   const loadingIcon = isLoading ? (
     <CircularProgress color="primary" />

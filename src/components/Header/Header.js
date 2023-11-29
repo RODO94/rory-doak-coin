@@ -25,7 +25,6 @@ export default function Header() {
             isActive ? "nav-link nav-link--active" : "nav-link"
           }
           end
-          exact
         >
           Connections
         </NavLink>

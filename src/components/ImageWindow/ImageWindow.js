@@ -19,8 +19,6 @@ export default function ImageWindow({ imageArray }) {
     },
   });
 
-  console.log(sortedImageArray);
-
   const sortArray = (array) => {
     if (array.length === 0) {
       setActiveImageURL(null);

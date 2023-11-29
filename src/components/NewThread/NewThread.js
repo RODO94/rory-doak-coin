@@ -30,7 +30,7 @@ export default function NewThread({ setThreadArray }) {
       const threadObj = { thread_name: event.target.name.value };
       const newThread = await createThread(threadObj);
       getThreads();
-      navigate(`/threads/${userId}/${newThread.data}`);
+      navigate(`/${userId}/threads/${newThread.data}`);
       event.target.reset();
     } catch (error) {}
   };
