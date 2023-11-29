@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import "./AddConnection.scss";
-import { TextField, createTheme } from "@mui/material";
+import { createTheme } from "@mui/material";
 import { Warning } from "@mui/icons-material";
 
 export default function AddConnection() {

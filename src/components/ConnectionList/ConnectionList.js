@@ -28,7 +28,7 @@ export default function ConnectionList() {
     <div className="connection-list">
       {connectionArray.map((connection, i) => {
         if (connection.user_id === connection.connect_id) {
-          return;
+          return " ";
         }
         return (
           <ConnectionCard

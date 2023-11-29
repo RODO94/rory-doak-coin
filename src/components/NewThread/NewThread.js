@@ -7,12 +7,10 @@ import {
   createTheme,
 } from "@mui/material";
 import { Add } from "@mui/icons-material";
-import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { createThread, fetchThreads } from "../../utils/AxiosRequests";
 
 export default function NewThread({ setThreadArray }) {
-  const [newThreadCreated, setNewThreadCreated] = useState(false);
   const { userId } = useParams();
   const navigate = useNavigate();
 
@@ -29,7 +27,6 @@ export default function NewThread({ setThreadArray }) {
   const handleThread = async (event) => {
     event.preventDefault();
     try {
-      setNewThreadCreated(true);
       const threadObj = { thread_name: event.target.name.value };
       const newThread = await createThread(threadObj);
       getThreads();

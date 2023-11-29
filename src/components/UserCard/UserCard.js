@@ -9,27 +9,28 @@ export default function UserCard() {
   const [userArray, setUserArray] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const { userId } = useParams();
-  const getAccounts = async () => {
-    const { data } = await axios.get(
-      `http://localhost:8080/accounts/${userId}`
-    );
-    setUserArray(data);
-    let balanceAmount = 0;
-    const balanceArray = data.map((balance) => {
-      return (balanceAmount = balanceAmount + balance.account_balance / 100);
-    });
 
-    console.log(balanceArray);
-
-    setUserBalance(balanceAmount);
-  };
   useEffect(() => {
+    const getAccounts = async () => {
+      const { data } = await axios.get(
+        `http://localhost:8080/accounts/${userId}`
+      );
+      setUserArray(data);
+      let balanceAmount = 0;
+      const balanceArray = data.map((balance) => {
+        return (balanceAmount = balanceAmount + balance.account_balance / 100);
+      });
+      setUserBalance(balanceAmount);
+
+      return balanceArray;
+    };
     getAccounts();
   }, [userId]);
 
   if (!userArray) {
     return <LinearProgress />;
   }
+
   return (
     <article className="user-card">
       <h1 className="user-card__welcome">Hello Rory!</h1>

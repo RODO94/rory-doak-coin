@@ -1,5 +1,4 @@
 import "./ChatInput.scss";
-import { Send } from "@mui/icons-material";
 import {
   IconButton,
   InputAdornment,

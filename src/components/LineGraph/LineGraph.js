@@ -5,7 +5,6 @@ import { fetchWeeklySpend } from "../../utils/AxiosRequests";
 
 export default function LineGraph() {
   const [lineData, setLineData] = useState(null);
-  const [isSlices, setIsSlices] = useState(false);
   useEffect(() => {
     const getData = async () => {
       return setLineData(await fetchWeeklySpend());
@@ -87,7 +86,6 @@ export default function LineGraph() {
             ],
           },
         ]}
-        enableSlices={isSlices ? "y" : false}
       />
     </section>
   );

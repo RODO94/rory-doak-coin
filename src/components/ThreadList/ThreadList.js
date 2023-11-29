@@ -15,16 +15,18 @@ export default function ThreadList({ userId }) {
       primary: { main: "#ffffff" },
     },
   });
-  const getThreads = async () => {
-    const { data } = await axios.get(`http://localhost:8080/threads/${userId}`);
-    setThreadArray(data);
-  };
 
   const handleNewThread = () => {
     setIsAddClicked(true);
   };
 
   useEffect(() => {
+    const getThreads = async () => {
+      const { data } = await axios.get(
+        `http://localhost:8080/threads/${userId}`
+      );
+      setThreadArray(data);
+    };
     getThreads();
     setIsAddClicked(false);
   }, [userId]);

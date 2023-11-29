@@ -1,13 +1,9 @@
-import { AccessTime, RemoveCircle } from "@mui/icons-material";
+import { RemoveCircle } from "@mui/icons-material";
 import "./ConnectionCard.scss";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 
-export default function ConnectionCard({
-  connectionName,
-  image,
-  connectionElement,
-}) {
+export default function ConnectionCard({ connectionName, image }) {
   const theme = createTheme({
     palette: {
       primary: { main: "#026052" },
@@ -18,7 +14,11 @@ export default function ConnectionCard({
   return (
     <article className="connection-card">
       <div className="connection-card__wrap">
-        <img className="connection-card__img" src={image} />
+        <img
+          className="connection-card__img"
+          src={image}
+          alt="profile of the user"
+        />
         <p className="connection-card__name">{connectionName}</p>
       </div>
       <div className="connection-card__wrap">

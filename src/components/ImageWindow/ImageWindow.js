@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import "./ImageWindow.scss";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { ArrowBack, ArrowForward, Circle } from "@mui/icons-material";
-import { Button, Skeleton, createTheme } from "@mui/material";
+import { Button, createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { getImage } from "../../utils/AxiosRequests";
 
 export default function ImageWindow({ imageArray }) {
   const [activeImageURL, setActiveImageURL] = useState(null);
   const [sortedImageArray, setSortedImageArray] = useState(imageArray);
-  const [isThereImage, setIsThereImage] = useState(true);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const { threadId } = useParams();
@@ -21,26 +19,10 @@ export default function ImageWindow({ imageArray }) {
     },
   });
 
-  const createImageURL = async () => {
-    if (imageArray.length === 0) {
-      setIsThereImage(false);
-      setActiveImageURL(null);
-      return;
-    } else {
-      setIsThereImage(true);
-      const data = await getImage(
-        threadId,
-        imageArray[activeImageIndex].file_id
-      );
-      const newUrl = URL.createObjectURL(data);
-      setActiveImageURL(newUrl);
-      return data;
-    }
-  };
+  console.log(sortedImageArray);
 
   const sortArray = (array) => {
     if (array.length === 0) {
-      setIsThereImage(false);
       setActiveImageURL(null);
       return;
     }
@@ -64,8 +46,22 @@ export default function ImageWindow({ imageArray }) {
 
   useEffect(() => {
     setSortedImageArray(sortArray(imageArray));
+    const createImageURL = async () => {
+      if (imageArray.length === 0) {
+        setActiveImageURL(null);
+        return;
+      } else {
+        const data = await getImage(
+          threadId,
+          imageArray[activeImageIndex].file_id
+        );
+        const newUrl = URL.createObjectURL(data);
+        setActiveImageURL(newUrl);
+        return data;
+      }
+    };
     createImageURL();
-  }, [imageArray, activeImageIndex]);
+  }, [imageArray, activeImageIndex, threadId]);
 
   if (!activeImageURL) {
     return <p className="image__loading">No Images Generated Yet</p>;
@@ -74,7 +70,11 @@ export default function ImageWindow({ imageArray }) {
     <section className="image-window">
       <ThemeProvider theme={theme}>
         <div className="image-window__wrap">
-          <img className="image-window__img" src={activeImageURL} />
+          <img
+            className="image-window__img"
+            src={activeImageURL}
+            alt="generated graph from assistant"
+          />
         </div>
         <div className="image-window__circles">
           <Button

@@ -9,20 +9,17 @@ export default function ThreadCard() {
   const [threadArray, setThreadArray] = useState(null);
   const { userId } = useParams();
 
-  const getThreads = async () => {
-    try {
-      const { data } = await axios.get(
-        `http://localhost:8080/threads/${userId}`
-      );
-      setThreadArray(data);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  console.log(threadArray);
-
   useEffect(() => {
+    const getThreads = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:8080/threads/${userId}`
+        );
+        setThreadArray(data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
     getThreads();
   }, [userId]);
 
