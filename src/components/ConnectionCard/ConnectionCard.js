@@ -22,7 +22,7 @@ export default function ConnectionCard({
         <p className="connection-card__name">{connectionName}</p>
       </div>
       <div className="connection-card__wrap">
-        <p className="connection-card__remove">Remove Connection</p>
+        <p className="connection-card__remove">Remove</p>
         <ThemeProvider theme={theme}>
           <button className="connection-card__remove-icon">
             <RemoveCircle

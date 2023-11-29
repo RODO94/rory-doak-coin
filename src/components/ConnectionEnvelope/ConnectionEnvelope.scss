@@ -5,6 +5,11 @@
   border-radius: 2.1875rem;
   padding: 2rem 2.1rem;
   margin: 1rem;
+  order: 2;
+  @include desktop {
+    order: 1;
+    margin: 0;
+  }
   &__title {
     margin: 0;
     font-size: 1.25rem;

@@ -6,7 +6,7 @@ import "./Connections.scss";
 
 export default function Connections() {
   return (
-    <main>
+    <main className="connections">
       <AddConnection />
       <ConnectionEnvelope />
       <MobileNav />

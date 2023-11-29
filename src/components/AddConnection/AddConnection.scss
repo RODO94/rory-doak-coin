@@ -5,6 +5,11 @@
   background: $background2;
   padding: 1.75rem 2.25rem;
   margin: 1rem;
+  order: 1;
+  @include desktop {
+    order: 2;
+    margin: 0;
+  }
 
   &__title {
     font-size: 1.25rem;
@@ -33,6 +38,10 @@
     padding: 0.5rem;
     padding-left: 1rem;
     font-family: "Roboto", sans-serif, monospace;
+    outline: none;
+    &:focus {
+      border: 2px solid $nav;
+    }
   }
   &__button {
     width: 100%;
@@ -45,6 +54,10 @@
     padding: 0.4rem 0;
     font-size: 1.1875rem;
     font-weight: 500;
+    &:hover {
+      cursor: pointer;
+      background-color: $background1;
+    }
   }
   &__warning {
     display: flex;

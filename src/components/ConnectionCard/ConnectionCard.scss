@@ -1,4 +1,5 @@
 @use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_variables" as *;
 .connection-card {
   border-radius: 2.1875rem;
   border: 1px solid #959090;
@@ -8,6 +9,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
+  @include desktop {
+    max-width: 40rem;
+    gap: 15vw;
+    &:hover {
+      cursor: pointer;
+      background: $accent2;
+    }
+  }
 
   &__wrap {
     display: flex;
@@ -21,24 +30,46 @@
     width: 1.875rem;
     height: 1.875rem;
     border-radius: 50%;
+    @include desktop {
+      width: 2.8125rem;
+      height: 2.8125rem;
+    }
   }
   &__name {
     font-size: 0.875rem;
     font-weight: 500;
     margin: 0;
+    @include desktop {
+      font-size: 1.1875rem;
+      text-wrap: nowrap;
+    }
   }
   &__remove {
     display: none;
     @include desktop {
+      display: inline;
+      text-wrap: nowrap;
+      margin-right: 2.31rem;
+      color: $remove;
+      &:hover {
+        text-decoration: 1px solid underline;
+      }
     }
     &--mobile {
       width: 1.2rem;
       height: 1.2rem;
+      @include desktop {
+        display: none;
+      }
     }
     &-icon {
       background-color: transparent;
       border: none;
       outline: none;
+      @include desktop {
+        display: none;
+      }
+
       &:hover {
         cursor: pointer;
       }

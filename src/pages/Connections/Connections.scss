@@ -1,0 +1,11 @@
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_variables" as *;
+.connections {
+  display: flex;
+  flex-direction: column;
+  @include desktop {
+    flex-direction: row;
+    padding: 2.69rem 6.25rem 3rem 6.25rem;
+    gap: 3.25rem;
+  }
+}

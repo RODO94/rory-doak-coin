@@ -12,6 +12,8 @@ export default function AddConnection() {
       background: { main: "fff" },
     },
   });
+
+  const handleSubmit = (event) => {};
   return (
     <section className="add-connection">
       <ThemeProvider theme={theme}>
@@ -20,7 +22,7 @@ export default function AddConnection() {
         <p className="add-connection__explainer">
           To connect with someone new, send them a connection request email.
         </p>
-        <form className="add-connection__form">
+        <form onSubmit={handleSubmit} className="add-connection__form">
           <input
             className="add-connection__input"
             type="email"
