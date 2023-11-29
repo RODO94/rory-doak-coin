@@ -8,7 +8,7 @@ export default function Thread({ threadId, userId, name }) {
 
   return (
     <NavLink
-      to={`/threads/${userId}/${threadId}`}
+      to={`/${userId}/threads/${threadId}`}
       className={({ isActive }) =>
         isActive ? "thread thread--active" : "thread"
       }

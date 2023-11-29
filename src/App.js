@@ -12,13 +12,13 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/home/:userId" element={<Homepage />} />
+          <Route path="/:userId" element={<Homepage />} />
           <Route path="/" element={<LogIn />} />
-          <Route path="/connections/:userId" element={<Connections />} />
-          <Route path="/threads/:userId" element={<Threads />} />
-          <Route path="/threads/:userId/:threadId" element={<Threads />} />
+          <Route path="/:userId/connections" element={<Connections />} />
+          <Route path="/:userId/threads" element={<Threads />} />
+          <Route path="/:userId/threads/:threadId" element={<Threads />} />
           <Route
-            path="/threads/:userId/:threadId/:runId"
+            path="/:userId/threads/:threadId/:runId"
             element={<Threads />}
           />
         </Routes>

@@ -25,7 +25,7 @@ export default function ChatWindow() {
   let runId = "";
 
   const scrolltoBottom = () => {
-    bottomDiv.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    bottomDiv.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleClick = (event) => {

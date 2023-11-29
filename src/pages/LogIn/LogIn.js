@@ -11,7 +11,7 @@ export default function LogIn() {
         <div className="log-in__profile">
           <img className="log-in__img" src={bigMan} alt="the big man" />
         </div>
-        <Link className="log-in__link" to={`/home/${userId}`}>
+        <Link className="log-in__link" to={`/${userId}`}>
           Log In
         </Link>
       </section>

@@ -13,4 +13,10 @@
     text-decoration-line: wavy;
     text-decoration-color: $background1;
   }
+  &--active {
+    background-color: $background1;
+    text-decoration: underline;
+    text-decoration-line: wavy;
+    text-decoration-color: $background1;
+  }
 }
