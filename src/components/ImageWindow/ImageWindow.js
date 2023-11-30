@@ -61,7 +61,7 @@ export default function ImageWindow({ imageArray }) {
     createImageURL();
   }, [imageArray, activeImageIndex, threadId]);
 
-  if (!activeImageURL) {
+  if (!activeImageURL || imageArray.length === 0) {
     return <p className="image__loading">No Images Generated Yet</p>;
   }
   return (
