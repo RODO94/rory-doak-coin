@@ -12,7 +12,6 @@ import {
   getRunStatus,
   runThread,
 } from "../../utils/AxiosRequests";
-import { NULL } from "sass";
 
 export default function ChatWindow() {
   const { userId, threadId } = useParams();
@@ -21,8 +20,11 @@ export default function ChatWindow() {
   const [isRunComplete, SetIsRunCompelete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const bottomDiv = useRef(null);
-  const assistantId = "asst_7VYbIXPEu7YKYSv7aMeJviCY";
+  const assistantId = "asst_PSbFXkuFSpBUFe9GCuC2ELrF";
 
+  // V01 asst_7VYbIXPEu7YKYSv7aMeJviCY
+  // V02 asst_tiGibH7JiVummtd8CCUl9Gss
+  // V03 asst_PSbFXkuFSpBUFe9GCuC2ELrF
   let runId = "";
 
   const scrolltoBottom = () => {
@@ -57,22 +59,43 @@ export default function ChatWindow() {
     event.target.reset();
   };
 
+  // while (!isRunComplete) {
+  //   statusObj =
+  //   if (statusObj.completed_at !== null) {
+  //     getMessageList();
+  //     setIsLoading(false);
+
+  //     return SetIsRunCompelete(true);
+  //   }
+  // }
+
   const startRun = async (assistantId, threadId) => {
     try {
       const assistantObj = { assistant_id: assistantId };
       const data = await runThread(threadId, assistantObj);
       runId = data.id;
-      let statusObj = {};
-      SetIsRunCompelete(false);
-      while (!isRunComplete) {
-        statusObj = await getRunStatus(threadId, runId);
-        if (statusObj.completed_at !== null) {
-          getMessageList();
-          setIsLoading(false);
-
-          return SetIsRunCompelete(true);
-        }
+      console.log(data);
+      console.log(runId);
+      if ((await data.status) === "in_progress") {
+        console.log("condition triggered");
+        setIsLoading(true);
+        return getMessageList();
       }
+      let runStatusObj = await getRunStatus(threadId, runId);
+      console.log(`before while ${await runStatusObj.status}`);
+
+      while (runStatusObj.status !== "completed") {
+        if (
+          runStatusObj.status === "in_progress" &&
+          runStatusObj.step.length > 0
+        ) {
+          console.log(runStatusObj);
+          return getMessageList();
+        }
+        runStatusObj = await getRunStatus(threadId, runId);
+      }
+      getMessageList();
+      setIsLoading(false);
       SetIsRunCompelete(false);
       return data;
     } catch (error) {

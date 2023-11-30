@@ -10,8 +10,8 @@ export default function ImageWindow({ imageArray }) {
   const [activeImageURL, setActiveImageURL] = useState(null);
   const [sortedImageArray, setSortedImageArray] = useState(imageArray);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-
   const { threadId } = useParams();
+
   const theme = createTheme({
     palette: {
       primary: { main: "#026052" },
@@ -41,7 +41,6 @@ export default function ImageWindow({ imageArray }) {
     }
     setActiveImageIndex((i) => i + 1);
   };
-
   useEffect(() => {
     setSortedImageArray(sortArray(imageArray));
     const createImageURL = async () => {
@@ -59,9 +58,10 @@ export default function ImageWindow({ imageArray }) {
       }
     };
     createImageURL();
+    console.log(activeImageURL);
   }, [imageArray, activeImageIndex, threadId]);
 
-  if (!activeImageURL) {
+  if (!activeImageURL || imageArray.length === 0) {
     return <p className="image__loading">No Images Generated Yet</p>;
   }
   return (
