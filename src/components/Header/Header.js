@@ -14,7 +14,7 @@ export default function Header() {
           className={({ isActive }) =>
             isActive ? "nav-link nav-link--active" : "nav-link"
           }
-          to={`/${userId}/threads/thread_CSLNqDZbKIvQtpJnQRaHO9jD`}
+          to={`/${userId}/threads/thread_PLK8WBHhGk8mutwfDVWzqnSv`}
           end
         >
           Threads

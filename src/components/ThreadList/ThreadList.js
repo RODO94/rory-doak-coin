@@ -29,6 +29,7 @@ export default function ThreadList({ userId }) {
       const { data } = await axios.get(
         `http://localhost:8080/threads/${userId}`
       );
+      console.log(data);
       setThreadArray(data);
     };
     getThreads();

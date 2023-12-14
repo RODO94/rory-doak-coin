@@ -19,7 +19,7 @@ export default function LineGraph() {
     <section className="line-graph">
       <ResponsiveLine
         data={lineData}
-        margin={{ top: 20, right: 10, bottom: 85, left: 40 }}
+        margin={{ top: 20, right: -20, bottom: 85, left: 15 }}
         colors={["#f470b0", "#026052", "#03a688", "#011212", "#c03679"]}
         colorBy="index"
         xScale={{ type: "point" }}
@@ -40,13 +40,7 @@ export default function LineGraph() {
           legendOffset: 36,
           legendPosition: "middle",
         }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legendOffset: -40,
-          legendPosition: "middle",
-        }}
+        axisLeft={null}
         pointSize={10}
         onClick={(event) => {
           console.log(

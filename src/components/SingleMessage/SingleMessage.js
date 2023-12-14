@@ -16,7 +16,7 @@ export default function SingleMessage({ role, content }) {
             : "message__title message__title--assistant"
         }
       >
-        {role}
+        {role === "user" ? "You" : "Assistant"}
       </strong>
       <div
         className={

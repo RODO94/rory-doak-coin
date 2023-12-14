@@ -21,7 +21,7 @@ export default function ChatWindow() {
   const [isRunComplete, SetIsRunCompelete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const bottomDiv = useRef(null);
-  const assistantId = "asst_7VYbIXPEu7YKYSv7aMeJviCY";
+  const assistantId = "asst_PSbFXkuFSpBUFe9GCuC2ELrF";
 
   let runId = "";
 
