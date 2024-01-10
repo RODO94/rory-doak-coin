@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 
 export default function Header() {
-  const userId = "57581dd2-96b8-4402-912b-c669c16f21a2";
+  const userId = "1";
 
   return (
     <header className="header">
@@ -14,7 +14,7 @@ export default function Header() {
           className={({ isActive }) =>
             isActive ? "nav-link nav-link--active" : "nav-link"
           }
-          to={`/${userId}/threads/thread_PLK8WBHhGk8mutwfDVWzqnSv`}
+          to={`/${userId}/threads/thread_A9dsCSidKTAItUqWPa0eqZQ4`}
           end
         >
           Threads

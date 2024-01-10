@@ -34,7 +34,7 @@ const fetchWeeklySpend = async () => {
 const addMessage = async (bodyObj, threadId) => {
   try {
     const { data } = await axios.post(
-      `http://localhost:8080/threads/${threadId}/message`,
+      `${baseURL}/threads/${threadId}/message`,
       bodyObj
     );
     return data;
