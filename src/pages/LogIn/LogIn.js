@@ -3,7 +3,7 @@ import bigMan from "../../assets/thebigman.jpg";
 import { Link } from "react-router-dom";
 
 export default function LogIn() {
-  const userId = "57581dd2-96b8-4402-912b-c669c16f21a2";
+  const userId = "1";
 
   return (
     <main className="log-in">
